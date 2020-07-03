@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+    {% block registro %}
+    <script async>
+        var test = document.getElementById('r1');
+        test.style.marginTop=0;
+    </script>
+    <div class="container"> <br><br>
+        <h1 class="text-center">Registro</h1> <br>
+        <form action="{% url 'registro' %}" method="POST" class="text-center" enctype="multipart/form-data">
+        {% csrf_token %}  
+        <!-- {{ form.non_field_errors }} -->
+            {% for field in form %}
+                {{field.label_tag}} 
+                {{field}}
+                <!-- {{field.errors}}  -->
+                <small class="form-text text-muted"> {{field.help_text}} </small><br>
+            {% endfor %}
+            <input type="submit" value="Registrar información" class="btn btn-primary" style="margin-top: 3%;">
+        </form> <br>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-info" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+        {% endif %}
+        <div class="text-center">
+            <a href="{% url 'login' %}">
+                <button class="btn btn-primary" class="text-center">Ya tienes una cuenta, inicia sesión aquí</button>
+            </a><br><br><br>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

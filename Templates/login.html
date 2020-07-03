@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block login %}
+            <div class="container"> <br><br>
+                <div class="text-center">
+                    <img src="{% static 'img/quanda.jpg' %}" class="img">
+                </div>
+                <h1 class="text-center">Inicio de Sesión</h1> <br>
+                <form action="{% url 'login' %}" class="center-block" method="POST">
+                    {% csrf_token %}  
+                    <!-- {{ form.non_field_errors }} -->
+                    <div class="form-group">
+                        {%for field in form%}
+                            {{field.label_tag}}<br>
+                            {{field}} <br>
+                        {% endfor %} <br>
+                        <div class="text-center">
+                            <input type="submit" value="Entrar" class="btn btn-primary" class="text-center"> <br><br>
+                        </div>
+                    </div>
+                </form>
+                <div class="text-center">
+                    <a href="{% url 'registro' %}">
+                        <button class="btn btn-primary">No tengo cuenta</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+</body>
+</html>
+{% endblock %}
