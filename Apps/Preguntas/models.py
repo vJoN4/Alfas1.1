@@ -1,5 +1,5 @@
 from django.db import models
-from Apps.Usuario.models import User
+from ..Usuario.models import User
 
 # Create your models here.
 CATEGORIAS = [
