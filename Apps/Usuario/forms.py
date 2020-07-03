@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from Apps.Usuario.models import User
+from ..Usuario.models import User
 
 class loginForm(forms.Form):
     username=forms.CharField(
@@ -19,13 +19,13 @@ class loginForm(forms.Form):
         min_length=6,
         required=True,
         label="Ingresa tu contraseña",
-        widget=forms.TextInput(attrs={
+        widget=forms.PasswordInput(attrs={
             'placeholder' : 'password',
             'class' : 'form-control',
         })
     )
 
-class registerForm(forms.form):
+class registerForm(ModelForm):
     class Meta:
         model = User
         fields = ['username', 'password', 'email','first_name','last_name','foto']
