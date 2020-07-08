@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    {% load static %}
+
+    <script src="{% static 'js/functions.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/user.css' %}">
+    <title>QandA - Preguntas mas recientes</title>
+</head>
+<body>
+    <div class="container-fluid header navbar-dark d-flex flex-row justify-content-between align-items-center logoIMG">
+        <div class="d-flex flex-row justify-content-center align-items-center header-titles">
+            <a href="{% url 'questions' %}">
+                <img src="{% static 'img/quanda.jpg'%}" class="img-logo-navbar">
+            </a>
+        </div>
+        <div class="row slogan">
+            <img src="{% static 'img/slogan.jpg'%}" class="img-logo-navbar">
+        </div>
+        <div class="row header-titles">
+            <label for="cateogoria" style="color: white; font-size: 70%;">Filtrar preguntas</label>
+            <select name="categoria" style="border: 5px solid white; font-weight: 600;">
+                <option value="0">Todas las categorias</option> 
+                <option value="Software">Software</option> 
+                <option value="Hardware">Hardware</option> 
+                <option value="Windows X">Windows X</option>
+                <option value="GNU/Linux">GNU/Linux</option> 
+                <option value="Programación">Programación</option> 
+                <option value="Desarrollo Web">Desarrollo Web</option> 
+                <option value="GIT">GIT</option> 
+            </select>
+        </div>
+        <div class="row h-100 d-flex justify-content-center align-items-center header-titles">
+            <div class="h-100 btn-none w75 m-0 p-0 dropdown-toggle" id="dropdownMenu"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="{{MEDIA_URL}}{{request.user.foto.url}}" class="img-profile-navbar">
+            </div>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu">
+                <a href=""class="dropdown-item">Perfil</a>
+                <a href="" class="dropdown-item">Mis preguntas</a>
+                <a href="" class="dropdown-item">Cerrar Sesión</a>
+            </div>
+        </div>
+    </div>
+
+{% block questions %}
+{% endblock %}
+
+{% block answers %}
+{% endblock %}
