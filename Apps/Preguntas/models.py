@@ -20,6 +20,9 @@ class pregunta(models.Model):
     categoria = models.CharField(max_length=20, choices=CATEGORIAS)
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.contenido
+
     class Meta:
         verbose_name = 'Pregunta'
         verbose_name_plural = 'Preguntas'
@@ -29,6 +32,9 @@ class respuesta(models.Model):
     fecha = models.DateField(auto_now=True, auto_now_add=False)
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     pregunta = models.ForeignKey('pregunta', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.fecha)
 
     class Meta:
         verbose_name = 'Respuesta'
