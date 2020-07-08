@@ -1,0 +1,34 @@
+{% extends 'questions.html' %}
+{% load static %}
+
+{% block uploadQuestion %}
+<div class="container-fluid bg-dark text-light pt-2" style="height: 30vh;">
+    <div class="container">
+        <form autocomplete="off">
+            <div class="form-group">
+                <label for="nombre">Pregunta: </label>
+                <input type="text" class="form-control" id="contenido" placeholder="Pregunta lo que desees, siempre que sea referente al tema ">
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Descripcion / Info. extra: </label>
+                <input type="text" class="form-control" id="descripcion" placeholder="Describe con mayor detalle tu pregunta">
+            </div>
+            <div class="form-group">
+                <label for="categoria">Categoria:</label>
+                <select name="categoria" style="border: 5px solid white; font-weight: 600;" id="categoria">
+                    <option value="0">Todas las categorias</option> 
+                    <option value="Software">Software</option> 
+                    <option value="Hardware">Hardware</option> 
+                    <option value="Windows X">Windows X</option>
+                    <option value="GNU/Linux">GNU/Linux</option> 
+                    <option value="Programación">Programación</option>  
+                    <option value="Desarrollo Web">Desarrollo Web</option> 
+                    <option value="GIT">GIT</option> 
+                </select>
+            </div>
+        </form>
+        <button type="submit" class="btn btn-primary" onclick="addQuestion()">Realizar pregunta</button>
+        <button type="button" class="btn btn-danger ml-2" onclick="redirectHome()">Cancelar</button>
+    </div>
+</div>
+{% endblock %}
