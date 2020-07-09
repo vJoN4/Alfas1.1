@@ -30,17 +30,43 @@ def uploadQuestion(request):
         descripcion = request.POST['descripcion']
         categoria = request.POST['categoria']
 
-        print(contenido)
-        print(descripcion)
-        print(categoria)
-        print(request.user.id)
-        print(date.today())
+        # print(contenido)
+        # print(descripcion)
+        # print(categoria)
+        # print(request.user.id)
+        # print(date.today())
         pregunta.objects.create(
             contenido = contenido,
             descripcion = descripcion,
             fecha = date.today(),
             categoria = categoria,
             usuario = request.user,
+        )
+        return HttpResponse(True)
+    except Exception as identifier:
+        return HttpResponse(False)
+
+def uploadAnswersTemplate(request, idPregunta):
+    question = pregunta.objects.get(id=idPregunta)
+    answers = respuesta.objects.filter(pregunta__id=idPregunta)
+    return render(request, 'uploadAnswers.html', {
+        'question' : question,
+        'answers' : answers,
+    })
+
+def uploadAnswers(request):
+    try:
+        contenido = request.POST['contenido']
+        idQuestion = request.POST['idQuestion']
+
+        # print(contenido)
+        # print(idQuestion)
+
+        respuesta.objects.create(
+            contenido = contenido,
+            fecha = date.today(),
+            usuario = request.user,
+            pregunta = pregunta.objects.get(id=idQuestion),
         )
         return HttpResponse(True)
     except Exception as identifier:
