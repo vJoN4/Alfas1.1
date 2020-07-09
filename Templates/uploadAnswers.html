@@ -1,0 +1,20 @@
+{% extends 'answers.html' %}
+{% load static %}
+
+{% block uploadAnswer %}
+<div class="container-fluid bg-dark text-light pt-2" style="height: 28vh;">
+    <div class="container">
+        <form autocomplete="off">
+            <div class="form-group">
+                <!-- <label for="nombre">Pregunta: </label> -->
+                <!-- <input type="text" class="form-control" id="contenido" placeholder="Pregunta lo que desees, siempre que sea referente al tema "> -->
+                <textarea class="form-control mt-3" id="contenido" cols="30" rows="7" placeholder="Redacta aqui tu respuesta"></textarea>
+            </div>
+        </form>
+        <button type="submit" class="btn btn-primary" onclick="addAnswwer()">Publicar respuesta</button>
+        <button type="button" class="btn btn-danger ml-2" onclick="redirectQuestion()">Cancelar</button>
+    </div>
+</div>
+</body>
+</html>
+{% endblock %}
