@@ -2,7 +2,11 @@
 {% load static %}
 
 {% block answers %}
-<div class="space-from-navbar pb-5 pt-3 w-100" style="box-shadow: 2px 2px 8px #000; margin-left: auto !important; margin-right: auto !important;">
+<script async>
+    // document.getElementById("categorias").setAttribute("disabled", "true");
+    disabledAttrAdd();
+</script>
+<div class="space-from-navbar pb-5 pt-3" style="box-shadow: 2px 2px 8px #000; margin-left: auto !important; margin-right: auto !important;" id="question" data-idQuestion="{{question.id}}">
     <div class="mt-5 questions-content" style="border: 1px solid #000; border-radius: 0.5%;">
         <div class="container-fluid d-flex flex-row justify-content-between align-items-start">
             <div class="row">
@@ -51,7 +55,7 @@
                         <div class="row">
                             <p class="h4 font-weight-bold pl-3" style="color: #000;">Respuesta: {{answer.usuario}} | Publicada: {{answer.fecha}}</p>
                             <div class="col-11 d-flex flex-column justify-content-start align-items-start">                        
-                                <p class="h5" style="border-top: #000 1px solid;">{{answer.contenido}}</p>
+                                <p class="h5 pt-2 pb-2" style="border-top: #000 1px solid;">{{answer.contenido}}</p>
                             </div>
                         </div>
                     </div>               
@@ -66,11 +70,15 @@
         </thead>
         </table>
         <div class="container mt-3 mb-3">
-            <a href="">
+            <a href="{% url 'upAnswer' idPregunta=question.id %}">
                 <button type="button" class="btn btn-lg btn-light btn-block btn-outline-secondary">
                     Escribir una respuesta
                 </button>
             </a>
+        </div>
+        <div class="container" style="max-height: 25%; margin-bottom: 2%;">
+            {% block uploadAnswer %}
+            {% endblock %}
         </div>
         </div>
         {% endif %}
