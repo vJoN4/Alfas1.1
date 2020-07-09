@@ -44,8 +44,46 @@ addQuestion = () =>{
         })
     }
 }
+
+addAnswwer = () =>{
+    let idQuestion = document.getElementById("question").dataset.idquestion;
+    let contenido = document.getElementById("contenido").value;
+
+    if(contenido == null)
+        alert('No puedes dejar el campo de tu respuesta vacio');
+    else{
+        let formData = new FormData();
+
+        formData.append("csrfmiddlewaretoken", getCookie("csrftoken"));
+        formData.append("contenido", contenido);
+        formData.append("idQuestion", idQuestion);
+        $.ajax({
+            type: 'POST',
+            url: 'http://127.0.0.1:8000/preguntas/addanswersurl',
+            data: formData,
+            processData : false,
+            contentType: false,
+            success: data => {
+                alert("Tu respuesta se ha publicado exitosamente");
+                redirectQuestion();
+            },
+            error: data => {
+                alert("Ha habido un problema publicando tu respuesta :C, intenta denuevo");
+            }
+        })
+    }
+}
 // ###########################################################################
 
 redirectHome = () =>{
     window.location.replace("home");
+}
+
+redirectQuestion = () =>{
+    let url = "http://127.0.0.1:8000/preguntas/answers/" + document.getElementById("question").dataset.idquestion;
+    window.location.replace(url);
+}
+
+disabledAttrAdd = () =>{
+    document.getElementById("categorias").setAttribute("disabled", "true");
 }
