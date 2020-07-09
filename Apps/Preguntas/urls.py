@@ -7,4 +7,6 @@ urlpatterns = [
     path('answers/<int:idPregunta>', views_questions.renderAnswers, name='answers'),
     path('addquestion', views_questions.uploadQuestionTemplate, name='upQuestion'),
     path('addquestionurl', views_questions.uploadQuestion, name='upQuestionURL'),
+    path('addanswers/<int:idPregunta>', views_questions.uploadAnswersTemplate, name='upAnswer'),
+    path('addanswersurl', views_questions.uploadAnswers, name='upAnswerURL'),
 ]
