@@ -47,7 +47,7 @@ addQuestion = () =>{
 
 addAnswwer = () =>{
     let idQuestion = document.getElementById("question").dataset.idquestion;
-    let contenido = document.getElementById("contenido").value;
+    let contenido = document.getElementById("contenidoAns").value;
 
     if(contenido == null)
         alert('No puedes dejar el campo de tu respuesta vacio');
