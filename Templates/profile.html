@@ -1,0 +1,55 @@
+{% extends 'homeBase.html' %}
+{% load static %}
+
+{% block profile %}
+<script async>
+    disabledAttrCategorias();
+</script>
+<div class="space-from-navbar pb-5 pt-3" style="box-shadow: 2px 2px 8px #000; margin-left: auto !important; margin-right: auto !important;">
+    <p class="display-3 text-center main-tittle">Información de la cuenta</p>
+        <div class="container-fluid d-flex flex-column no-wrap justify-content-start align-items-start">
+            <div class="container w-25">
+                <img src="{{MEDIA_URL}}{{request.user.foto.url}}" alt="" class="w-100 border border-dark rounded mb-3 mt-3">
+                <input type="file" style="display: none;" class="form-control-file" id="foto" accept=".jpg,.jpeg,.png" onchange="validateFileType()">
+            </div>
+            <div class="column w-100 d-flex flex-column no-wrap justify-content-around align-items-center">
+                <div class="row w-50">
+                    <p style="color: #113663; font-weight: 500;" class="display-4 pt-4">Nombre de usuario:</p>
+                </div>
+                <div class="row w-50">
+                    <input type="text" class="form-control input-profile" id="username" disabled="true" value="{{request.user.username}}" data-username="{{request.user.username}}">
+                </div>
+                <div class="row w-50">
+                    <p style="color: #113663; font-weight: 500;" class="display-4 pt-4">Nombre(s):</p>
+                </div>
+                <div class="row w-50">
+                    <input  type="text" class="form-control input-profile" id="nombres" disabled="true" value="{{request.user.first_name}}" data-firsname="{{request.user.first_name}}">
+                </div>
+                <div class="row w-50">
+                    <p style="color: #113663; font-weight: 500;" class="display-4 pt-4">Apellido(s):</p>
+                </div>
+                <div class="row w-50">
+                    <input type="text" class="form-control input-profile" id="apellidos" disabled="true" value="{{request.user.last_name}}" data-lastname="{{request.user.last_name}}">
+                </div>
+                <div class="row w-50">
+                    <p style="color: #113663; font-weight: 500;" class="display-4 pt-4">Dirección de correo:</p>
+                </div>
+                <div class="row w-50">
+                    <input type="text" class="form-control input-profile" id="email" disabled="true" value="{{request.user.email}}" data-email="{{request.user.email}}">
+                </div>
+                <div class="row w-50">
+                    <p style="color: #113663; font-weight: 500;" class="display-4 pt-4">Activo desde:</p>
+                </div>
+                <div class="row w-50">
+                    <p type="text" class="input-profile">{{request.user.date_joined}}</p>
+                </div>
+                <div class="row w-50">
+                    <button class="btn btn-outline-dark btn-lg mt-2 mb-2" style="font-size: 4vh;" id="update" onclick="changeInputs()">Actualizar información</button>
+                </div>
+                <div class="row w-50">
+                    <button class="btn btn-outline-danger btn-lg mt-2 mb-2" style="font-size: 4vh; display: none;" id="cancel" onclick="window.location.reload()">Cancelar</button>
+                </div>
+            </div>
+        </div>   
+</div>
+{% endblock %}
