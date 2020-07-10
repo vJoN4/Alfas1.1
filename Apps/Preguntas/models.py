@@ -14,7 +14,7 @@ CATEGORIAS = [
 
 
 class pregunta(models.Model):
-    contenido = models.CharField(max_length=150)
+    contenido = models.CharField(max_length=450)
     descripcion = models.TextField()
     fecha = models.DateField(auto_now=True, auto_now_add=False)
     categoria = models.CharField(max_length=20, choices=CATEGORIAS)
