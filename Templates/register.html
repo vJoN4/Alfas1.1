@@ -9,11 +9,9 @@
         <h1 class="text-center">Registro</h1> <br>
         <form action="{% url 'registro' %}" method="POST" class="text-center" enctype="multipart/form-data">
         {% csrf_token %}  
-        <!-- {{ form.non_field_errors }} -->
             {% for field in form %}
                 {{field.label_tag}} 
                 {{field}}
-                <!-- {{field.errors}}  -->
                 <small class="form-text text-muted"> {{field.help_text}} </small><br>
             {% endfor %}
             <input type="submit" value="Registrar información" class="btn btn-primary" style="margin-top: 3%;">
