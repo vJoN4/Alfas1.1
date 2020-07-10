@@ -23,6 +23,7 @@ body, html{
 .space-from-navbar{
     position: absolute;
     margin-top: 2% !important;
+    margin-bottom: 2% !important;
     left: 5%;
     width: 90% !important;
     background-color: #FFF;
@@ -82,4 +83,12 @@ span{
 
 .navbar-href{
     color: #FFF !important;
+}
+
+.input-profile{
+    font-size: 3vh !important;
+}
+
+.effect{
+    cursor: pointer;
 }
