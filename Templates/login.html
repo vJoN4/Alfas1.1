@@ -23,7 +23,15 @@
                     <a href="{% url 'registro' %}">
                         <button class="btn btn-primary">No tengo cuenta</button>
                     </a>
+                </div><br>
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-info" role="alert">
+                    {{message}}, pero puedes registrarte :D
+                    <br>En caso de que estes seguro de que existe, entonces te equivocaste en alguno de los campos
                 </div>
+                {% endfor %}
+                {% endif %}
             </div>
         </div>
 </body>
