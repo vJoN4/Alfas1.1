@@ -15,7 +15,7 @@
 </div>
 
 <div class="space-from-navbar pb-5 pt-3" style="box-shadow: 2px 2px 8px #000; margin-left: auto !important; margin-right: auto !important;">
-    <h1 class="display-4 main-tittle font-weight-bold ml-3" style="color: #000;">Preguntas recientes</h1>
+    <h1 class="display-4 main-tittle font-weight-bold ml-3" style="color: #000;">Preguntas recientes: {{categoria}}</h1>
         
     <!-- TEST DE CONTENEDORES -->
     {% for question in questions %}
@@ -34,7 +34,7 @@
                         <div class="col-1 mt-3">
                             <a href="{% url 'answers' idPregunta=question.id %}">
                                 <button class="btn m-0 p-0 btn-large ">
-                                    <img class=" img-fluid" src="{% static 'img/modify.png' %}" style="max-width: 57.13px; max-height: 57.13px;">
+                                    <img class=" img-fluid" src="{% static 'img/answer.png' %}" style="max-width: 57.13px; max-height: 57.13px;">
                                 </button>
                             </a>
                         </div>
