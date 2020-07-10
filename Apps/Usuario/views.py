@@ -34,6 +34,7 @@ def Login(request):
 def register(request):
     if request.method == 'POST':
         form = registerForm(request.POST, request.FILES)
+        print(form.is_valid())
         if form.is_valid():
             usermame = form.cleaned_data['username']
             password = form.cleaned_data['password']
@@ -46,10 +47,12 @@ def register(request):
             emailUser = User.objects.filter(email=email)
 
             if len(user)>0:
+                print("Usuario repetido")
                 messages.error(request, "Este nombre de usuario ya esta registrado")
                 return render(request, 'register.html', {'form' : form})
             
             if len(emailUser)>0:
+                print("Email repetido")
                 messages.error(request, "Este correo ya se encuentra registrado")
                 return render(request, 'register.html', {'form': form})
 
@@ -66,6 +69,7 @@ def register(request):
             messages.success(request, "Usuario creado exitosamente")
             return render(request, 'register.html', {'form': form})
         else:
+            messages.error(request, "Formulario no valido, reviselo porfavor")
             return render(request, 'register.html', {'form': form})
     else:
         form = registerForm()
