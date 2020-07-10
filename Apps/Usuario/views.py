@@ -6,8 +6,11 @@ from .models import User
 from django.contrib import messages
 
 # Create your views here.
-def renderizado(request):
-    return render(request, 'login.html')
+def home(request):
+    if request.user.is_authenticated :
+        return redirect('questions')
+    else:
+        return redirect('login')
 
 def Login(request):
     if request.method == 'POST':
@@ -21,7 +24,7 @@ def Login(request):
                 return redirect(views_questions.renderQuestions)
             else:
                 messages.error(request, "Esta cuenta no existe")
-                return render(request, 'login.html', {'form:form'})
+                return render(request, 'login.html', {'form':form})
         else:
             return HttpResponse("Chale")
     else:
@@ -67,3 +70,7 @@ def register(request):
     else:
         form = registerForm()
         return render(request, 'register.html', {'form': form})
+
+def Logout(request):
+    logout(request)
+    return redirect(Login)
