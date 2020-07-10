@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from ..Usuario.models import User
+from .models import User
 
 class loginForm(forms.Form):
     username=forms.CharField(
