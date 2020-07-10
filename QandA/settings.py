@@ -132,3 +132,7 @@ AUTH_USER_MODEL='Usuario.User'
 
 MEDIA_URL='/Media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'Media')
+
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "questions"
+LOGOUT_REDIRECT_URL = "login"
