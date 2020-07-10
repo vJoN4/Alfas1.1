@@ -225,24 +225,24 @@ updateInfo = () =>{
     }
 }
 
-questionsByCategory = () =>{
-    let categoria = document.getElementById("categorias").value;
-    if (categoria==0)
-        alert("Escoja una categoria porfavor");
-    else{
-        formData = new FormData();
-        formData.append("csrfmiddlewaretoken", getCookie("csrftoken"));
-        formData.append("categoria", categoria);
-        $.ajax({
-            type: 'POST',
-            url: 'http://127.0.0.1:8000/preguntas/bycategory',
-            data : formData,
-            processData : false,
-            contentType: false,
-            }
-        )
-    }
-}
+// questionsByCategory = () =>{
+//     let categoria = document.getElementById("categorias").value;
+//     if (categoria==0)
+//         alert("Escoja una categoria porfavor");
+//     else{
+//         formData = new FormData();
+//         formData.append("csrfmiddlewaretoken", getCookie("csrftoken"));
+//         formData.append("categoria", categoria);
+//         $.ajax({
+//             type: 'POST',
+//             url: 'http://127.0.0.1:8000/preguntas/bycategory',
+//             data : formData,
+//             processData : false,
+//             contentType: false,
+//             }
+//         )
+//     }
+// }
 // ###########################################################################
 
 redirectHome = () =>{
