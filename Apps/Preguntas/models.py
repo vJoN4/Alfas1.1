@@ -6,7 +6,7 @@ CATEGORIAS = [
     ("Software","Software"),
     ("Hardware","Hardware"),
     ("Windows","Windows"),
-    ("GNU/Linux","GNU/Linux"),
+    ("GNU Linux","GNU Linux"),
     ("Programación","Programación"),
     ("Desarrollo Web","Desarrollo Web"),
     ("GIT","GIT"),
