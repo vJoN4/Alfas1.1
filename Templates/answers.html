@@ -3,8 +3,7 @@
 
 {% block answers %}
 <script async>
-    // document.getElementById("categorias").setAttribute("disabled", "true");
-    disabledAttrAdd();
+    disabledAttrCategorias();
 </script>
 <div class="space-from-navbar pb-5 pt-3" style="box-shadow: 2px 2px 8px #000; margin-left: auto !important; margin-right: auto !important;" id="question" data-idQuestion="{{question.id}}">
     <div class="mt-5 questions-content" style="border: 1px solid #000; border-radius: 0.5%;">
@@ -13,22 +12,48 @@
                 <div class="col-12 d-flex flex-column justify-content-start align-items-start mt-3">
                     <div class="row">
                         <div class="col-11 d-flex flex-column justify-content-start align-items-start">
+                            {% if request.user == question.usuario %}
+                            <textarea type="text" class="h2 font-weight-bold form-control" style="color: #000;" id="contenido">{{question.contenido}}</textarea>
+                            {% elif request.user != question.usuario %}
                             <p class="h2 font-weight-bold" style="color: #000;">{{question.contenido}}</p>
+                            {% endif %}
                         </div>
                         <div class="col-11 d-flex flex-column justify-content-center align-items-center">
+                            {% if request.user == question.usuario %}
+                            <textarea class="h2 font-weight-bold form-control" style="color: #000;" cols="50" id="descripcion">{{question.descripcion}}</textarea>
+                            {% elif request.user != question.usuario %}
                             <p class="w-100 mt-2 pb-2" style="border-bottom: 1px solid #000; font-size: large; color: #000;">{{question.descripcion}}</p>
+                            {% endif %}
                         </div>
                     </div>
-                    <div class="container-fluid d-flex flex-column justify-content-center align-items-start mt-2 " style="height: 5%;">
+                    <div class="container-fluid d-flex flex-column justify-content-center align-items-start mt-3" style="height: 5%;">
                         <p>
                             <span>Publicado: {{question.fecha}}</span>
                             <span>|</span>
                             <span>Por: {{question.usuario}}</span>
-                            <span>|</span> 
+                            <span>|</span>
+                            <span>Categoria:</span>
+                            {% if request.user == question.usuario %}
+                            <span><select name="categoria" style="border: 5px solid white; font-weight: 600;" id="categoriasAnswers">
+                                <option value="0">Todas las categorias</option> 
+                                <option value="Software">Software</option> 
+                                <option value="Hardware">Hardware</option> 
+                                <option value="Windows X">Windows X</option>
+                                <option value="GNU Linux">GNU Linux</option> 
+                                <option value="Programación">Programación</option> 
+                                <option value="Desarrollo Web">Desarrollo Web</option> 
+                                <option value="GIT">GIT</option> 
+                            </select></span>
+                            {% elif request.user != question.usuario %}
                             <span>Categoria: {{question.categoria}}</span>
-                            <span>|</span>        
+                            <span>|</span>
+                            {% endif %}
                             <span># de respuestas: {{answers|length}}</span>
-                            <span>|</span>                           
+                            <span>|</span>
+                            {% if request.user == question.usuario %}
+                            <span><button type="submit" class="btn btn-primary" onclick="editQuestion()">Guardar cambios</button></span>
+                            <span><button type="submit" class="btn btn-danger" onclick="deleteQuestion()">Eliminar pregunta (NO HAY VUELTA ATRAS DESPUES DE SELECCIOANR ESTA ACCIÓN)</button></span>
+                            {% endif %}
                         </p>
                     </div>
                 </div>               
@@ -54,8 +79,14 @@
                     <div class="col-12 justify-content-center align-items-center">
                         <div class="row">
                             <p class="h4 font-weight-bold pl-3" style="color: #000;">Respuesta: {{answer.usuario}} | Publicada: {{answer.fecha}}</p>
-                            <div class="col-11 d-flex flex-column justify-content-start align-items-start">                        
+                            <div class="col-11 d-flex flex-column justify-content-start align-items-start"> 
+                                {% if request.user == answer.usuario %}
+                                <textarea id="contenido" cols="70" class="h2 font-weight-bold form-control">{{answer.contenido}}</textarea>
+                                <button type="submit" class="btn btn-primary mb-2" onclick="editAnswer(this)" data-idanswer="{{answer.id}}">Guardar cambios</button>
+                                <button type="submit" class="btn btn-danger mb-2" onclick="deleteAnswer(this)" data-idanswer="{{answer.id}}">Eliminar respuesta (NO HAY VUELTA ATRAS)</button>
+                                {% elif reques.user != answer.usuario %}                    
                                 <p class="h5 pt-2 pb-2" style="border-top: #000 1px solid;">{{answer.contenido}}</p>
+                                {% endif %}
                             </div>
                         </div>
                     </div>               
@@ -69,6 +100,7 @@
             </tr>
         </thead>
         </table>
+        {% endif %}
         <div class="container mt-3 mb-3">
             <a href="{% url 'upAnswer' idPregunta=question.id %}">
                 <button type="button" class="btn btn-lg btn-light btn-block btn-outline-secondary">
@@ -81,7 +113,6 @@
             {% endblock %}
         </div>
         </div>
-        {% endif %}
     </div>
 </div>
 </body>
