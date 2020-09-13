@@ -10,3 +10,7 @@
 ![alt text](https://github.com/vJoN4/Alfas1.1/blob/master/Screenshots/7.jpg)
 ![alt text](https://github.com/vJoN4/Alfas1.1/blob/master/Screenshots/8.jpg)
 ![alt text](https://github.com/vJoN4/Alfas1.1/blob/master/Screenshots/9.jpg)
+![alt text](https://github.com/vJoN4/Alfas1.1/blob/master/Screenshots/10.jpg)
+![alt text](https://github.com/vJoN4/Alfas1.1/blob/master/Screenshots/11.jpg)
+![alt text](https://github.com/vJoN4/Alfas1.1/blob/master/Screenshots/12.jpg)
+![alt text](https://github.com/vJoN4/Alfas1.1/blob/master/Screenshots/13.jpg)
